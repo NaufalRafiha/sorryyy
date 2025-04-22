@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Permintaan Maaf dari Naumy</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      color: white;
+      cursor: pointer;
+      transition: background 0.4s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #0056b3, #009acd);
+      transform: scale(1.02);
+    }
+
+    .isi-surat {
+      white-space: pre-wrap;
+      background: #fdfdfd;
+      padding: 20px;
+      margin-top: 25px;
+      border-left: 5px solid #007bff;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .isi-surat.muncul {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bird {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-image: url('burung.png'); /* Ganti dengan URL gambar burung kamu */
+      background-size: cover;
+      animation: fly 7s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translateX(-100px) translateY(0) scale(0.5) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(120vw) translateY(-200px) scale(1) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Permintaan Maaf dari Naumy</h2>
+    <button onclick="tampilkanSurat()">Lihat Isi Permintaan Maaf</button>
+    <div class="isi-surat" id="surat"></div>
+  </div>
+
+  <script>
+    function tampilkanSurat() {
+      const surat = `Maaf ya kalau aku hari ini bikin kamu kecewa atau ngerasa dibohongin… aku pengen jujur sekarang, biar semuanya gak makin salah paham.
+
+Pap yang aku kirim ke kamu tadi emang bukan foto dari hari ini. Tapi tolong percaya, aku beneran ke kampus hari ini, aku gak bohong soal itu. Aku cuma... ngirim pap yang lama karena di foto itu aku ngerasa lebih cantik, lebih pede, dan lebih "enak dilihat". Sedangkan hari ini aku lagi keliatan jelek gendut, aku malu kalau kamu lihat aku dalam kondisi itu.
+
+Buat kamu mungkin keliatannya sepele, tapi buat aku, aku cuma pengen tetap kelihatan menarik di matamu. Tapi aku sadar, niat kayak gitu gak seharusnya bikin aku ngelakuin hal yang bikin kamu ngerasa dibohongin. Harusnya aku tetap kirim yang jujur, tetap real-time, karena aku tahu kejujuran itu yang paling kamu butuhin dari aku.
+
+Aku gak punya niat buruk sama sekali. Aku gak nutupin keberadaanku, aku gak selingkuh, aku gak main di belakang kamu. Aku cuma cewek yang terlalu mikir “aku keliatan oke gak ya?”, dan akhirnya malah bikin orang yang paling aku sayang jadi salah paham.
+
+Aku ngerti kalau ini bikin kamu kesel. Aku ngerti kalau kepercayaan kamu bisa goyah karena hal-hal kecil yang kayak gini. Tapi aku tulis ini bukan buat ngerayu, bukan juga buat ngebela diri—aku tulis ini karena aku sayang kamu, dan aku gak mau kesalahan kecil tumbuh jadi jarak besar antara kita.
+
+Maafin aku ya, dan kalau kamu masih bisa percaya, aku janji bakal lebih hati-hati dan jujur ke depannya. Aku belajar dari ini. Beneran.
+
+Dari aku, yang selalu sayang kamu,
+Naumy Revaline`;
+
+      const divSurat = document.getElementById("surat");
+      divSurat.textContent = surat;
+      divSurat.classList.add("muncul");
+
+      // Tambah banyak burung terbang
+      for (let i = 0; i < 5; i++) {
+        const bird = document.createElement("div");
+        bird.classList.add("bird");
+        bird.style.top = Math.random() * 60 + 10 + "vh"; // Atur posisi vertikal acak
+        bird.style.left = -100 - Math.random() * 300 + "px"; // Atur posisi horizontal acak
+        bird.style.animationDelay = `${Math.random() * 1.5}s`; // Atur delay acak
+        bird.style.transform = `scale(${0.4 + Math.random() * 0.6})`; // Atur skala acak
+        document.body.appendChild(bird);
+
+        setTimeout(() => bird.remove(), 7000); // Burung menghilang setelah animasi selesai
+      }
+    }
+  </script>
+
+</body>
+</html>
